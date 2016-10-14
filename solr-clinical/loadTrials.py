@@ -6,7 +6,7 @@
 # (c)2016 Jingwen Wang @ UML
 
 '''
-usage: python loadTrials.py trial.en.text
+usage: python loadTrials.py data/trials.en.text
 '''
 
 import logging
