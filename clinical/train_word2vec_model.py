@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-usage: python train_word2vec_model.py wiki.en.text wiki.en.text.model wiki.en.text.vector
+usage: python train_word2vec_model.py trial.en.text trial.en.text.model trial.en.text.vector
 '''
 
 import logging
