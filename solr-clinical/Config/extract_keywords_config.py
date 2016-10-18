@@ -3,6 +3,7 @@ from config_base import ConfigurationBase
 class ExtractKeywordsConfig(ConfigurationBase):
     def __init__(self, config_file):
         ConfigurationBase.__init__(self, config_file)
+
         self.processed_documents_folder = self.__getfilepath__("DEFAULT", "processed_documents_folder")
         self.file_mask                  = self.__getstring__("DEFAULT", "file_mask")
 

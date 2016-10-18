@@ -7,8 +7,9 @@
 
 
 """
-    usage: python loadTrials.py trial.en.text
+    usage: python extract_keyword.py config.ini
 """
+
 
 
 import time, hashlib, re
@@ -75,7 +76,7 @@ def find_sub_phrases_to_remove(tpl_phrase, valid_phrases, doc_freq, to_rem):
 
 """ Extract Phrases """
 import sys
-from Config.extract_keywords_config import ExtractKeywordsConfig
+from config.extract_keywords_config import ExtractKeywordsConfig
 
 if len(sys.argv) != 2:
     raise Exception("Incorrect number of arguments passed - one expected, the config file name")
@@ -91,6 +92,7 @@ if config.stop_words_file:
 else:
     stop_words = set()
 
+
 """ Load Documents """
 start = time.time()
 files = find_files(config.processed_documents_folder, config.file_mask, True)
@@ -99,7 +101,9 @@ documents = []
 for i, fname in enumerate(files):
     with open(fname) as f:
         contents = f.read()
-        documents.append(contents.split("\n"))
+        docs = contents.split("\n\n")
+        for doc in docs:
+            documents.append(doc.split("\n"))
 end = time.time()
 print("Loading %i documents took %s seconds" % (len(files), str(end - start)))
 

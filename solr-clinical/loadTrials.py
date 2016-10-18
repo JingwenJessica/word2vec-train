@@ -6,7 +6,7 @@
 # (c)2016 Jingwen Wang @ UML
 
 '''
-usage: python loadTrials.py data/trials.en.text
+usage: python loadTrials.py data/trials/trials.en.txt
 '''
 
 import logging
@@ -38,10 +38,10 @@ if __name__ == '__main__':
     space = " "
     i = 0
 
-    output = open(outp, 'w')
+    outputFile = open(outp, 'w')
 
     pageId = 0
-    pageSize = 200
+    pageSize = 1000
     while True:
         pageId += 1
         trialsList = mongodbHandler.loadTrainTextByPage(pageId, pageSize)
@@ -49,15 +49,13 @@ if __name__ == '__main__':
             break
         for trial in trialsList:
             try:
-                output.write(space.join(trial) + "\n")
-                i = i + 1
+                outputFile.write(space.join(trial) + "\n")
+                i += 1
+                if (i % 1000 == 0):
+                    logger.info("Load " + str(i) + " trials")
             except:
                 e = sys.exc_info()[0]
                 # print( "[!] Error: %s" % e )
                 # print trial
-
-            if (i % 1000 == 0):
-                logger.info("Load " + str(i) + " trials")
-
-    output.close()
+    outputFile.close()
     logger.info("Finished Load " + str(i) + " trials")

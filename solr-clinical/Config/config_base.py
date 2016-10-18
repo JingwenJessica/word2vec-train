@@ -32,3 +32,8 @@ class ConfigurationBase(object):
         fname = self.__getstring__(section, key)
         assert os.path.exists(fname), "File path: %s does not exist" % fname
         return fname
+
+    # def __getfolderpath__(self, section, key):
+    #     dirname = self.__getstring__(section, key)
+    #     assert os.path.isdir(dirname), "Directory path: %s does not exist" % dirname
+    #     return dirname

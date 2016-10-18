@@ -27,24 +27,24 @@ class mongodbHandler:
 
         if "brief_title" in trial:
             text = normalization.normalization( trial["brief_title"] )
-            textList.append( text )
+            textList.append( text + "\n")
 
         if "official_title" in trial:
             if trial["official_title"] != trial["brief_title"]:
                 text = normalization.normalization(trial["official_title"])
-                textList.append(text)
+                textList.append(text + "\n")
 
         if "study_design" in trial:
             text = normalization.normalization(trial["study_design"])
-            textList.append(text)
+            textList.append(text + "\n")
 
         if "brief_summary" in trial:
             text = normalization.normalization(trial["brief_summary"]["textblock"])
-            textList.append(text)
+            textList.append(text + "\n")
 
         if "detailed_description" in trial:
             text = normalization.normalization(trial["detailed_description"]["textblock"])
-            textList.append(text)
+            textList.append(text + "\n")
 
         return textList
 
